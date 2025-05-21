@@ -9,12 +9,12 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ExampleBlock extends Block {
- 
-    public ExampleBlock(Settings settings) {
+public class BaseConcreteBlock extends Block {
+
+
+    public BaseConcreteBlock(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState());
-
     }
 
     @Override
