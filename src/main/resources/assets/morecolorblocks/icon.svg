@@ -1,0 +1,41 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        :root {
+        --block-size: 28;  /* 基础方块单位 */
+        --gap: 4;          /* 间距系统 */
+        --radius: 6;       /* 统一圆角 */
+        }
+        .color-matrix {
+        filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+        }
+    </style>
+
+    <!-- 复合背景 -->
+    <rect width="128" height="128" fill="#F3F4F6" rx="12"/>
+
+    <!-- 核心色块矩阵 -->
+    <g transform="translate(15 18)" class="color-matrix">
+        <!-- 第一行 -->
+        <g transform="translate(0 0)">
+            <rect width="28" height="28" fill="#FF6B6B" rx="6"/>
+            <rect x="32" width="28" height="28" fill="#4ECDC4" rx="6"/>
+            <rect x="64" width="28" height="28" fill="#FFE66D" rx="6"/>
+        </g>
+
+        <!-- 第二行 -->
+        <g transform="translate(16 32)">
+            <rect width="28" height="28" fill="#C44D58" rx="6"/>
+            <rect x="32" width="28" height="28" fill="#556270" rx="6"/>
+        </g>
+
+        <!-- 第三行 -->
+        <g transform="translate(8 64)">
+            <rect width="28" height="28" fill="#A463F2" rx="6"/>
+            <rect x="32" width="28" height="28" fill="#6BFFB8" rx="6"/>
+            <rect x="64" width="28" height="28" fill="#FFA36B" rx="6"/>
+        </g>
+    </g>
+
+    <!-- 品牌标识 -->
+    <rect x="8" y="8" width="112" height="112" fill="none" stroke="#E5E7EB" stroke-width="2" rx="16"/>
+</svg>
