@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "litematica-shulker-box-picker:block/condensed_dirt"
+    "all": "morecolorblocks:block/condensed_dirt"
   }
 }

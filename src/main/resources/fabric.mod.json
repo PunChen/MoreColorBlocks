@@ -11,13 +11,13 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "com.punchen.morecolorblocks.client.MorecolorblocksDataGenerator"
+      "com.punchen.morecolorblocks.client.MoreColorBlocksDataGenerator"
     ],
     "client": [
-      "com.punchen.morecolorblocks.client.MorecolorblocksClient"
+      "com.punchen.morecolorblocks.client.MoreColorBlocksClient"
     ],
     "main": [
-      "com.punchen.morecolorblocks.Morecolorblocks"
+      "com.punchen.morecolorblocks.MoreColorBlocks"
     ]
   },
   "mixins": [
