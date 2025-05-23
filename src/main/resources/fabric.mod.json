@@ -3,15 +3,15 @@
   "id": "morecolorblocks",
   "version": "${version}",
   "name": "MoreColorBlocks",
-  "description": "",
-  "authors": [],
+  "description": "Add more color blocks in minecraft for building",
+  "authors": ["PunChen"],
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "assets/morecolorblocks/icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "com.punchen.morecolorblocks.client.MoreColorBlocksDataGenerator"
+      "com.punchen.morecolorblocks.generator.MCBSDataGenerator"
     ],
     "client": [
       "com.punchen.morecolorblocks.client.MoreColorBlocksClient"

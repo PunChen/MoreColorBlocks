@@ -1,22 +1,25 @@
 package com.punchen.morecolorblocks.client;
 
 import com.punchen.morecolorblocks.block.BlockColor;
-import com.punchen.morecolorblocks.block.ModBlocks;
+import com.punchen.morecolorblocks.block.ColorBlocks;
 import com.punchen.morecolorblocks.utils.Utils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+
+import static com.punchen.morecolorblocks.block.ColorBlocks.colorBlockMap;
 
 public class MoreColorBlocksClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-//        for (BlockColor color : BlockColor.values()) {
-//            ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex)
-//                    -> Utils.toHexColor(color), ModBlocks.BASE_COLOR_BLOCK);
-//        }
         // 52 149 235
-//        ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> 0x3495eb, ModBlocks.BASE_COLOR_BLOCK);
+        Utils.LOGGER.warn("onInitializeClient start");
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
-                Utils.toHexColor(BlockColor.RED_PURPLE_3), ModBlocks.BASE_COLOR_BLOCK);
+                Utils.toHexColor(BlockColor.ORANGE_RED_1), ColorBlocks.BASE_COLOR_BLOCK);
+        // 以树叶作为父类，手动修改颜色
+        for (BlockColor color : colorBlockMap.keySet()) {
+            ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> Utils.toHexColor(color), colorBlockMap.get(color));
+        }
+        Utils.LOGGER.warn("onInitializeClient end");
     }
 }

@@ -22,11 +22,10 @@ loom {
     }
 }
 
-//fabricApi {
-//    configureDataGeneration {
-//        client = true
-//    }
-//}
+fabricApi {
+    configureDataGeneration(){
+    }
+}
 
 repositories {
     // Add repositories to retrieve artifacts from in here.

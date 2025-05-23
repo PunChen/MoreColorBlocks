@@ -1,12 +1,16 @@
-package com.punchen.morecolorblocks.client;
+package com.punchen.morecolorblocks.generator;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
-public class MoreColorBlocksDataGenerator implements DataGeneratorEntrypoint {
+public class MCBSDataGenerator implements DataGeneratorEntrypoint {
 
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+        pack.addProvider(MCBSLootTableProvider::new);
+        pack.addProvider(MCBSModelProvider::new);
+        pack.addProvider(MCBSBlockTagProvider::new);
     }
+
 }
