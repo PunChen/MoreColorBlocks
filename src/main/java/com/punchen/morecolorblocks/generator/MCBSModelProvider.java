@@ -33,9 +33,11 @@ public class MCBSModelProvider extends FabricModelProvider {
         for (ConfigColor color : colorBlockMap.keySet()) {
             blockStateModelGenerator.registerSingleton(colorBlockMap.get(color),
                     TextureMap.all(Identifier.ofVanilla("block/white_concrete")), LEAVES_MODEL);
+//            blockStateModelGenerator.registerSimpleCubeAll(colorBlockMap.get(color));
         }
-        blockStateModelGenerator.registerSingleton(ColorBlocks.BASE_COLOR_BLOCK,
-                TextureMap.all(Identifier.ofVanilla("block/white_concrete")), LEAVES_MODEL);
+//        blockStateModelGenerator.registerSingleton(ColorBlocks.BASE_COLOR_BLOCK,
+//                TextureMap.all(Identifier.ofVanilla("block/white_concrete")), LEAVES_MODEL);
+        blockStateModelGenerator.registerSimpleCubeAll(ColorBlocks.BASE_COLOR_BLOCK);
     }
 
     // 以树叶作为父类，手动修改颜色

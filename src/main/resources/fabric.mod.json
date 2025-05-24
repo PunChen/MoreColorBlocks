@@ -7,7 +7,7 @@
   "authors": ["PunChen"],
   "contact": {},
   "license": "All-Rights-Reserved",
-  "icon": "assets/morecolorblocks/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [

@@ -16,14 +16,19 @@ public class MoreColorBlocksClient implements ClientModInitializer {
         // 52 149 235
         Utils.LOGGER.warn("MoreColorBlocksClient onInitializeClient start");
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) ->
-                Utils.toHexColor(255, 255, 255), ColorBlocks.BASE_COLOR_BLOCK);
+                Utils.toHexColor(0, 255, 0), ColorBlocks.BASE_COLOR_BLOCK);
         ColorProviderRegistry.ITEM.register((state, tintIndex) ->
-                Utils.toHexColor(255, 255, 255), ColorBlocks.BASE_COLOR_BLOCK);
+                Utils.toHexColor(0, 255, 0), ColorBlocks.BASE_COLOR_BLOCK);
+
 //         以树叶作为父类，手动修改颜色
         for (ConfigColor color : colorBlockMap.keySet()) {
             ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> Utils.toHexColor(color), colorBlockMap.get(color));
             ColorProviderRegistry.ITEM.register((state, tintIndex) -> Utils.toHexColor(color), ColorItems.colorItemMap.get(color));
         }
+
         Utils.LOGGER.warn("MoreColorBlocksClient onInitializeClient end");
+
     }
+
+
 }

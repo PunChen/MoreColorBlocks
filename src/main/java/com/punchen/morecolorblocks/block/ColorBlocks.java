@@ -1,13 +1,17 @@
 package com.punchen.morecolorblocks.block;
 
 
+import com.punchen.morecolorblocks.colors.BlockColorUtils;
 import com.punchen.morecolorblocks.colors.ConfigColor;
 import com.punchen.morecolorblocks.items.ColorItems;
 import com.punchen.morecolorblocks.utils.Reference;
+import com.punchen.morecolorblocks.utils.Utils;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -16,11 +20,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 
 public class ColorBlocks {
@@ -39,45 +48,44 @@ public class ColorBlocks {
     public static final String BASE_COLOR_BLOCK_NAME_EN = "base_color_block";
     public static final String BASE_COLOR_BLOCK_NAME_CN = "基色方块";
 
-    public static final Block BASE_COLOR_BLOCK = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), BASE_COLOR_BLOCK_NAME_EN, true);
+    public static final Block BASE_COLOR_BLOCK = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), BASE_COLOR_BLOCK_NAME_EN, true);
 
-    public static final Block RED_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_1.name().toLowerCase(), true);
-    public static final Block RED_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_2.name().toLowerCase(), true);
-    public static final Block RED_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_3.name().toLowerCase(), true);
-    public static final Block RED_PURPLE_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_PURPLE_1.name().toLowerCase(), true);
-    public static final Block RED_PURPLE_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_PURPLE_2.name().toLowerCase(), true);
-    public static final Block RED_PURPLE_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_PURPLE_3.name().toLowerCase(), true);
-    public static final Block PURPLE_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_1.name().toLowerCase(), true);
-    public static final Block PURPLE_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_2.name().toLowerCase(), true);
-    public static final Block PURPLE_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_3.name().toLowerCase(), true);
-    public static final Block PURPLE_BLUE_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_BLUE_1.name().toLowerCase(), true);
-    public static final Block PURPLE_BLUE_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_BLUE_2.name().toLowerCase(), true);
-    public static final Block PURPLE_BLUE_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_BLUE_3.name().toLowerCase(), true);
-    public static final Block BLUE_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_1.name().toLowerCase(), true);
-    public static final Block BLUE_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_2.name().toLowerCase(), true);
-    public static final Block BLUE_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_3.name().toLowerCase(), true);
-    public static final Block BLUE_GREEN_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_GREEN_1.name().toLowerCase(), true);
-    public static final Block BLUE_GREEN_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_GREEN_2.name().toLowerCase(), true);
-    public static final Block BLUE_GREEN_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_GREEN_3.name().toLowerCase(), true);
-    public static final Block GREEN_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.GREEN_1.name().toLowerCase(), true);
-    public static final Block GREEN_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.GREEN_2.name().toLowerCase(), true);
-    public static final Block GREEN_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.GREEN_3.name().toLowerCase(), true);
-    public static final Block YELLOW_GREEN_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_GREEN_1.name().toLowerCase(), true);
-    public static final Block YELLOW_GREEN_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_GREEN_2.name().toLowerCase(), true);
-    public static final Block YELLOW_GREEN_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_GREEN_3.name().toLowerCase(), true);
-    public static final Block YELLOW_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_1.name().toLowerCase(), true);
-    public static final Block YELLOW_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_2.name().toLowerCase(), true);
-    public static final Block YELLOW_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_3.name().toLowerCase(), true);
-    public static final Block ORANGE_YELLOW_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_YELLOW_1.name().toLowerCase(), true);
-    public static final Block ORANGE_YELLOW_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_YELLOW_2.name().toLowerCase(), true);
-    public static final Block ORANGE_YELLOW_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_YELLOW_3.name().toLowerCase(), true);
-    public static final Block ORANGE_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_1.name().toLowerCase(), true);
-    public static final Block ORANGE_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_2.name().toLowerCase(), true);
-    public static final Block ORANGE_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_3.name().toLowerCase(), true);
-    public static final Block ORANGE_RED_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_RED_1.name().toLowerCase(), true);
-    public static final Block ORANGE_RED_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_RED_2.name().toLowerCase(), true);
-    public static final Block ORANGE_RED_3 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_RED_3.name().toLowerCase(), true);
-
+    public static final Block RED_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.RED_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_1.name().toLowerCase(), true);
+    public static final Block RED_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.RED_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_2.name().toLowerCase(), true);
+    public static final Block RED_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.RED_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_3.name().toLowerCase(), true);
+    public static final Block RED_PURPLE_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.RED_PURPLE_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_PURPLE_1.name().toLowerCase(), true);
+    public static final Block RED_PURPLE_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.RED_PURPLE_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_PURPLE_2.name().toLowerCase(), true);
+    public static final Block RED_PURPLE_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.RED_PURPLE_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_PURPLE_3.name().toLowerCase(), true);
+    public static final Block PURPLE_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.PURPLE_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_1.name().toLowerCase(), true);
+    public static final Block PURPLE_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.PURPLE_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_2.name().toLowerCase(), true);
+    public static final Block PURPLE_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.PURPLE_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_3.name().toLowerCase(), true);
+    public static final Block PURPLE_BLUE_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.PURPLE_BLUE_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_BLUE_1.name().toLowerCase(), true);
+    public static final Block PURPLE_BLUE_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.PURPLE_BLUE_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_BLUE_2.name().toLowerCase(), true);
+    public static final Block PURPLE_BLUE_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.PURPLE_BLUE_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.PURPLE_BLUE_3.name().toLowerCase(), true);
+    public static final Block BLUE_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.BLUE_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_1.name().toLowerCase(), true);
+    public static final Block BLUE_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.BLUE_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_2.name().toLowerCase(), true);
+    public static final Block BLUE_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.BLUE_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_3.name().toLowerCase(), true);
+    public static final Block BLUE_GREEN_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.BLUE_GREEN_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_GREEN_1.name().toLowerCase(), true);
+    public static final Block BLUE_GREEN_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.BLUE_GREEN_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_GREEN_2.name().toLowerCase(), true);
+    public static final Block BLUE_GREEN_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.BLUE_GREEN_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.BLUE_GREEN_3.name().toLowerCase(), true);
+    public static final Block GREEN_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.GREEN_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.GREEN_1.name().toLowerCase(), true);
+    public static final Block GREEN_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.GREEN_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.GREEN_2.name().toLowerCase(), true);
+    public static final Block GREEN_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.GREEN_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.GREEN_3.name().toLowerCase(), true);
+    public static final Block YELLOW_GREEN_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.YELLOW_GREEN_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_GREEN_1.name().toLowerCase(), true);
+    public static final Block YELLOW_GREEN_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.YELLOW_GREEN_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_GREEN_2.name().toLowerCase(), true);
+    public static final Block YELLOW_GREEN_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.YELLOW_GREEN_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_GREEN_3.name().toLowerCase(), true);
+    public static final Block YELLOW_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.YELLOW_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_1.name().toLowerCase(), true);
+    public static final Block YELLOW_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.YELLOW_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_2.name().toLowerCase(), true);
+    public static final Block YELLOW_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.YELLOW_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.YELLOW_3.name().toLowerCase(), true);
+    public static final Block ORANGE_YELLOW_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_YELLOW_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_YELLOW_1.name().toLowerCase(), true);
+    public static final Block ORANGE_YELLOW_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_YELLOW_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_YELLOW_2.name().toLowerCase(), true);
+    public static final Block ORANGE_YELLOW_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_YELLOW_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_YELLOW_3.name().toLowerCase(), true);
+    public static final Block ORANGE_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_1.name().toLowerCase(), true);
+    public static final Block ORANGE_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_2.name().toLowerCase(), true);
+    public static final Block ORANGE_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_3.name().toLowerCase(), true);
+    public static final Block ORANGE_RED_1 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_RED_1)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_RED_1.name().toLowerCase(), true);
+    public static final Block ORANGE_RED_2 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_RED_2)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_RED_2.name().toLowerCase(), true);
+    public static final Block ORANGE_RED_3 = register(new BaseBlock(AbstractBlock.Settings.create().mapColor(BlockColorUtils.getMapColorByConfigColor(ConfigColor.ORANGE_RED_3)).instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.ORANGE_RED_3.name().toLowerCase(), true);
     public static final Map<ConfigColor, Block> colorBlockMap = new HashMap<>();
 
     static {
@@ -136,7 +144,6 @@ public class ColorBlocks {
                 itemGroup.add(colorBlockMap.get(color));
             }
         });
-
     }
 
 }
