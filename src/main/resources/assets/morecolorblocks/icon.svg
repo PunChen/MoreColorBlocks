@@ -1,9 +1,9 @@
 <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
     <style>
         :root {
-        --block-size: 28;  /* 基础方块单位 */
-        --gap: 4;          /* 间距系统 */
-        --radius: 6;       /* 统一圆角 */
+        --block-size: 28; /* 基础方块单位 */
+        --gap: 4; /* 间距系统 */
+        --radius: 6; /* 统一圆角 */
         }
         .color-matrix {
         filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));

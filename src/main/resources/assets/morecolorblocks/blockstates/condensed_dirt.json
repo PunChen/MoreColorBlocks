@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "morecolorblocks:block/condensed_dirt" }
+    "": {
+      "model": "morecolorblocks:block/condensed_dirt"
+    }
   }
 }

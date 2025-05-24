@@ -9,8 +9,6 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
-import static com.punchen.morecolorblocks.block.ColorBlocks.BASE_COLOR_BLOCK_NAME_EN;
-
 public class MCBSENProvider extends FabricLanguageProvider {
 
 
@@ -24,7 +22,10 @@ public class MCBSENProvider extends FabricLanguageProvider {
         for (ConfigColor color : ColorBlocks.colorBlockMap.keySet()) {
             translationBuilder.add(ColorBlocks.colorBlockMap.get(color), color.name().toLowerCase());
         }
+        for (ConfigColor color : ColorBlocks.colorBlockPowderMap.keySet()) {
+            translationBuilder.add(ColorBlocks.colorBlockPowderMap.get(color), color.name().toLowerCase() + "_powder");
+        }
         translationBuilder.add(Reference.MOD_NAME, Reference.MOD_NAME);
-        translationBuilder.add(ColorBlocks.BASE_COLOR_BLOCK, BASE_COLOR_BLOCK_NAME_EN);
+//        translationBuilder.add(ColorBlocks.BASE_COLOR_BLOCK, BASE_COLOR_BLOCK_NAME_EN);
     }
 }

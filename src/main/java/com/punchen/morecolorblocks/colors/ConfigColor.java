@@ -52,6 +52,7 @@ public enum ConfigColor {
         this.id = id;
     }
 
+
     public ConfigColor getColorById(int id) {
         for (ConfigColor color : values()) {
             if (color.id == id) {

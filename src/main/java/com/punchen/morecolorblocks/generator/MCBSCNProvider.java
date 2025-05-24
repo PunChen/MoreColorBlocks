@@ -9,8 +9,6 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
-import static com.punchen.morecolorblocks.block.ColorBlocks.BASE_COLOR_BLOCK_NAME_CN;
-
 public class MCBSCNProvider extends FabricLanguageProvider {
 
 
@@ -24,7 +22,10 @@ public class MCBSCNProvider extends FabricLanguageProvider {
         for (ConfigColor color : ColorBlocks.colorBlockMap.keySet()) {
             translationBuilder.add(ColorBlocks.colorBlockMap.get(color), color.cn_name);
         }
+        for (ConfigColor color : ColorBlocks.colorBlockPowderMap.keySet()) {
+            translationBuilder.add(ColorBlocks.colorBlockPowderMap.get(color), color.cn_name + "粉末");
+        }
         translationBuilder.add(Reference.MOD_NAME, "更多色彩方块");
-        translationBuilder.add(ColorBlocks.BASE_COLOR_BLOCK, BASE_COLOR_BLOCK_NAME_CN);
+//        translationBuilder.add(ColorBlocks.BASE_COLOR_BLOCK, BASE_COLOR_BLOCK_NAME_CN);
     }
 }

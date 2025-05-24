@@ -1,6 +1,5 @@
 package com.punchen.morecolorblocks.generator;
 
-import com.punchen.morecolorblocks.block.ColorBlocks;
 import com.punchen.morecolorblocks.colors.ConfigColor;
 import com.punchen.morecolorblocks.utils.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -11,6 +10,7 @@ import net.minecraft.util.Identifier;
 import java.util.Optional;
 
 import static com.punchen.morecolorblocks.block.ColorBlocks.colorBlockMap;
+import static com.punchen.morecolorblocks.block.ColorBlocks.colorBlockPowderMap;
 
 public class MCBSModelProvider extends FabricModelProvider {
     public MCBSModelProvider(FabricDataOutput output) {
@@ -35,9 +35,15 @@ public class MCBSModelProvider extends FabricModelProvider {
                     TextureMap.all(Identifier.ofVanilla("block/white_concrete")), LEAVES_MODEL);
 //            blockStateModelGenerator.registerSimpleCubeAll(colorBlockMap.get(color));
         }
+        for (ConfigColor color : colorBlockPowderMap.keySet()) {
+            blockStateModelGenerator.registerSingleton(colorBlockPowderMap.get(color),
+                    TextureMap.all(Identifier.ofVanilla("block/white_concrete_powder")), LEAVES_MODEL);
+//            blockStateModelGenerator.registerSimpleCubeAll(colorBlockMap.get(color));
+        }
+
 //        blockStateModelGenerator.registerSingleton(ColorBlocks.BASE_COLOR_BLOCK,
 //                TextureMap.all(Identifier.ofVanilla("block/white_concrete")), LEAVES_MODEL);
-        blockStateModelGenerator.registerSimpleCubeAll(ColorBlocks.BASE_COLOR_BLOCK);
+//        blockStateModelGenerator.registerSimpleCubeAll(ColorBlocks.BASE_COLOR_BLOCK);
     }
 
     // 以树叶作为父类，手动修改颜色

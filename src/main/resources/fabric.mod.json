@@ -4,7 +4,9 @@
   "version": "${version}",
   "name": "MoreColorBlocks",
   "description": "Add more color blocks in minecraft for building",
-  "authors": ["PunChen"],
+  "authors": [
+    "PunChen"
+  ],
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "icon.png",

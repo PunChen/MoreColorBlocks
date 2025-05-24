@@ -78,6 +78,6 @@ public class BlockColorUtils {
         if (index < COPY_COLORS.length && index >= 0 && COPY_COLORS[index] != null) {
             return COPY_COLORS[index];
         }
-        return MapColor.CLEAR;
+        return MapColor.WHITE;
     }
 }
