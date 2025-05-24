@@ -1,7 +1,6 @@
 package com.punchen.morecolorblocks.client;
 
 import com.punchen.morecolorblocks.colors.ConfigColor;
-import com.punchen.morecolorblocks.block.ColorBlocks;
 import com.punchen.morecolorblocks.items.ColorItems;
 import com.punchen.morecolorblocks.utils.Utils;
 import net.fabricmc.api.ClientModInitializer;

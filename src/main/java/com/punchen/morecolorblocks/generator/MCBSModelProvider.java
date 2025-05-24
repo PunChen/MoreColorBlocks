@@ -1,12 +1,10 @@
 package com.punchen.morecolorblocks.generator;
 
 import com.punchen.morecolorblocks.colors.ConfigColor;
-import com.punchen.morecolorblocks.items.ColorItems;
 import com.punchen.morecolorblocks.utils.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.*;
-import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
