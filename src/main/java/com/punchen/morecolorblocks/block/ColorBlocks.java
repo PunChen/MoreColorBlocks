@@ -2,7 +2,9 @@ package com.punchen.morecolorblocks.block;
 
 
 import com.punchen.morecolorblocks.colors.ConfigColor;
+import com.punchen.morecolorblocks.items.ColorItems;
 import com.punchen.morecolorblocks.utils.Reference;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -10,9 +12,11 @@ import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
@@ -32,13 +36,10 @@ public class ColorBlocks {
         return Registry.register(Registries.BLOCK, id, block);
     }
 
-//    public static final Block CONDENSED_DIRT = register(
-//            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).requiresTool().strength(1.8F)),
-//            "condensed_dirt",
-//            true
-//    );
+    public static final String BASE_COLOR_BLOCK_NAME_EN = "base_color_block";
+    public static final String BASE_COLOR_BLOCK_NAME_CN = "基色方块";
 
-//    public static final Block BASE_COLOR_BLOCK = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), "base_color_block", true);
+    public static final Block BASE_COLOR_BLOCK = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), BASE_COLOR_BLOCK_NAME_EN, true);
 
     public static final Block RED_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_1.name().toLowerCase(), true);
     public static final Block RED_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_2.name().toLowerCase(), true);
@@ -118,19 +119,22 @@ public class ColorBlocks {
         colorBlockMap.put(ConfigColor.ORANGE_RED_3, ORANGE_RED_3);
     }
 
+    public static final ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(ColorItems.BASE_COLOR_ITEM))
+            .displayName(Text.translatable(Reference.MOD_NAME))
+            .build();
+
     public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY =
             RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Reference.MOD_ID, "item_group"));
 
     public static void initialize() {
 
+        Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register((itemGroup) -> {
-//            itemGroup.add(ColorBlocks.CONDENSED_DIRT.asItem());
-//            itemGroup.add(ColorBlocks.BASE_COLOR_BLOCK.asItem());
-
-            for (Block block:colorBlockMap.values()) {
-                itemGroup.add(block);
+            itemGroup.add(ColorBlocks.BASE_COLOR_BLOCK.asItem());
+            for (ConfigColor color : colorBlockMap.keySet()) {
+                itemGroup.add(colorBlockMap.get(color));
             }
-
         });
 
     }

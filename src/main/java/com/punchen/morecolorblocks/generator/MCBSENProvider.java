@@ -2,11 +2,14 @@ package com.punchen.morecolorblocks.generator;
 
 import com.punchen.morecolorblocks.block.ColorBlocks;
 import com.punchen.morecolorblocks.colors.ConfigColor;
+import com.punchen.morecolorblocks.utils.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
+
+import static com.punchen.morecolorblocks.block.ColorBlocks.BASE_COLOR_BLOCK_NAME_EN;
 
 public class MCBSENProvider extends FabricLanguageProvider {
 
@@ -21,5 +24,7 @@ public class MCBSENProvider extends FabricLanguageProvider {
         for (ConfigColor color : ColorBlocks.colorBlockMap.keySet()) {
             translationBuilder.add(ColorBlocks.colorBlockMap.get(color), color.name().toLowerCase());
         }
+        translationBuilder.add(Reference.MOD_NAME, Reference.MOD_NAME);
+        translationBuilder.add(ColorBlocks.BASE_COLOR_BLOCK, BASE_COLOR_BLOCK_NAME_EN);
     }
 }

@@ -1,5 +1,6 @@
 package com.punchen.morecolorblocks.generator;
 
+import com.punchen.morecolorblocks.block.ColorBlocks;
 import com.punchen.morecolorblocks.colors.ConfigColor;
 import com.punchen.morecolorblocks.utils.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -33,6 +34,8 @@ public class MCBSModelProvider extends FabricModelProvider {
             blockStateModelGenerator.registerSingleton(colorBlockMap.get(color),
                     TextureMap.all(Identifier.ofVanilla("block/white_concrete")), LEAVES_MODEL);
         }
+        blockStateModelGenerator.registerSingleton(ColorBlocks.BASE_COLOR_BLOCK,
+                TextureMap.all(Identifier.ofVanilla("block/white_concrete")), LEAVES_MODEL);
     }
 
     // 以树叶作为父类，手动修改颜色

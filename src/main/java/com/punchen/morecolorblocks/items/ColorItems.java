@@ -18,6 +18,7 @@ public final class ColorItems {
     }
 
     // 使用Items.register进行物品注册，绑定block和item
+    public static final Item BASE_COLOR_ITEM = Items.register(ColorBlocks.BASE_COLOR_BLOCK);
     public static final Item RED_1 = Items.register(ColorBlocks.RED_1);
     public static final Item RED_2 = Items.register(ColorBlocks.RED_2);
     public static final Item RED_3 = Items.register(ColorBlocks.RED_3);

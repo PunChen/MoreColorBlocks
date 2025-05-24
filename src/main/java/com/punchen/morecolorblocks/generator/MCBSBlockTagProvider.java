@@ -1,5 +1,6 @@
 package com.punchen.morecolorblocks.generator;
 
+import com.punchen.morecolorblocks.block.ColorBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -31,7 +32,7 @@ public class MCBSBlockTagProvider extends FabricTagProvider<Block> {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 
         addColorBlockTag(BlockTags.PICKAXE_MINEABLE, false, new ArrayList<>(colorBlockMap.values()));
-//        addColorBlockTag(BlockTags.PICKAXE_MINEABLE, false, List.of(ColorBlocks.BASE_COLOR_BLOCK));
+        addColorBlockTag(BlockTags.PICKAXE_MINEABLE, false, List.of(ColorBlocks.BASE_COLOR_BLOCK));
         addColorBlockTag(BlockTags.SHOVEL_MINEABLE, false, new ArrayList<>());
         addColorBlockTag(BlockTags.HOE_MINEABLE, false, new ArrayList<>());
         addColorBlockTag(BlockTags.AXE_MINEABLE, false, new ArrayList<>());

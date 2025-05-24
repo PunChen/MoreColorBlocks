@@ -1,5 +1,6 @@
 package com.punchen.morecolorblocks.generator;
 
+import com.punchen.morecolorblocks.block.ColorBlocks;
 import com.punchen.morecolorblocks.colors.ConfigColor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
@@ -20,5 +21,6 @@ public class MCBSLootTableProvider extends FabricBlockLootTableProvider {
         for (ConfigColor color : colorBlockMap.keySet()) {
             addDrop(colorBlockMap.get(color));
         }
+        addDrop(ColorBlocks.BASE_COLOR_BLOCK);
     }
 }
