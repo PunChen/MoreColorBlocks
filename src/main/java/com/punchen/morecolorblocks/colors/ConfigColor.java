@@ -1,6 +1,6 @@
-package com.punchen.morecolorblocks.block;
+package com.punchen.morecolorblocks.colors;
 
-public enum BlockColor {
+public enum ConfigColor {
     RED_1(246, 32, 32),
     RED_2(248, 76, 76),
     RED_3(247, 113, 113),
@@ -42,14 +42,14 @@ public enum BlockColor {
     public final int G;
     public final int B;
 
-    BlockColor(int r, int g, int b) {
+    ConfigColor(int r, int g, int b) {
         this.R = r;
         this.G = g;
         this.B = b;
     }
 
     public static void main(String[] args) {
-        for (BlockColor color : BlockColor.values()) {
+        for (ConfigColor color : ConfigColor.values()) {
             System.out.println(color);
         }
     }

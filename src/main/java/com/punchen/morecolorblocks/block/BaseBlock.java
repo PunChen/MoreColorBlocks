@@ -9,12 +9,4 @@ public class BaseBlock extends Block {
         super(settings);
         setDefaultState(getDefaultState());
     }
-
-//    @Override
-//    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-//        if (!world.isClient) {
-//            player.sendMessage(Text.literal("Hello, world!"), false);
-//        }
-//        return ActionResult.SUCCESS;
-//    }
 }

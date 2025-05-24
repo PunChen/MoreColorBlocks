@@ -1,6 +1,6 @@
 package com.punchen.morecolorblocks.generator;
 
-import com.punchen.morecolorblocks.block.BlockColor;
+import com.punchen.morecolorblocks.colors.ConfigColor;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.registry.RegistryWrapper;
@@ -18,7 +18,7 @@ public class MCBSLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
 // Also adds the condition that it survives the explosion that broke it, if applicable,
 //        addDrop(ColorBlocks.CONDENSED_DIRT);
-        for (BlockColor color : colorBlockMap.keySet()) {
+        for (ConfigColor color : colorBlockMap.keySet()) {
             addDrop(colorBlockMap.get(color));
         }
     }

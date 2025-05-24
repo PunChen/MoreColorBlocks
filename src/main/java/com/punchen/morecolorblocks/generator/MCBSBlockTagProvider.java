@@ -1,8 +1,6 @@
 package com.punchen.morecolorblocks.generator;
 
-import com.punchen.morecolorblocks.block.BlockColor;
 import com.punchen.morecolorblocks.block.ColorBlocks;
-import com.punchen.morecolorblocks.utils.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -10,7 +8,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import org.apache.commons.compress.utils.Lists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +43,7 @@ public class MCBSBlockTagProvider extends FabricTagProvider<Block> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+
         addColorBlockTag(COLOR_BLOCK_PICKAXE, false, new ArrayList<>(colorBlockMap.values()));
         addColorBlockTag(COLOR_BLOCK_PICKAXE, false, List.of(ColorBlocks.BASE_COLOR_BLOCK));
         addColorBlockTag(COLOR_BLOCK_SHOVEL, false, List.of(ColorBlocks.CONDENSED_DIRT));
