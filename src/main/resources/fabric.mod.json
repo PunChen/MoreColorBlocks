@@ -7,9 +7,14 @@
   "authors": [
     "PunChen"
   ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/PunChen/MoreColorBlocks",
+    "homepage": "https://github.com/PunChen/MoreColorBlocks",
+    "issues": "https://github.com/PunChen/MoreColorBlocks/issues",
+    "releases": "https://github.com/PunChen/MoreColorBlocks/releases"
+  },
   "license": "All-Rights-Reserved",
-  "icon": "icon.png",
+  "icon": "assets/morecolorblocks/icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
