@@ -8,9 +8,12 @@ public class MCBSDataGenerator implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+
         pack.addProvider(MCBSLootTableProvider::new);
         pack.addProvider(MCBSModelProvider::new);
         pack.addProvider(MCBSBlockTagProvider::new);
+        pack.addProvider(MCBSENProvider::new);
+        pack.addProvider(MCBSCNProvider::new);
     }
 
 }
