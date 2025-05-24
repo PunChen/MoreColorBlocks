@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -20,19 +21,6 @@ public class MCBSBlockTagProvider extends FabricTagProvider<Block> {
         super(output, RegistryKeys.BLOCK, registriesFuture);
     }
 
-    // 生成钻石搞挖掘标签 pickaxe.json
-    public static final TagKey<Block> COLOR_BLOCK_PICKAXE = TagKey.of(RegistryKeys.BLOCK,
-            Identifier.ofVanilla("mineable/pickaxe"));
-
-    public static final TagKey<Block> COLOR_BLOCK_HOE = TagKey.of(RegistryKeys.BLOCK,
-            Identifier.ofVanilla("mineable/hoe.json"));
-
-    public static final TagKey<Block> COLOR_BLOCK_SHOVEL = TagKey.of(RegistryKeys.BLOCK,
-            Identifier.ofVanilla("mineable/shovel"));
-
-    public static final TagKey<Block> COLOR_BLOCK_AXE = TagKey.of(RegistryKeys.BLOCK,
-            Identifier.ofVanilla("mineable/axe"));
-
     protected void addColorBlockTag(TagKey<Block> tagKey, boolean replace, List<Block> blockList) {
         FabricTagProvider<Block>.FabricTagBuilder blockTagBuilder = getOrCreateTagBuilder(tagKey);
         for (Block block : blockList) {
@@ -44,10 +32,10 @@ public class MCBSBlockTagProvider extends FabricTagProvider<Block> {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 
-        addColorBlockTag(COLOR_BLOCK_PICKAXE, false, new ArrayList<>(colorBlockMap.values()));
-        addColorBlockTag(COLOR_BLOCK_PICKAXE, false, List.of(ColorBlocks.BASE_COLOR_BLOCK));
-        addColorBlockTag(COLOR_BLOCK_SHOVEL, false, List.of(ColorBlocks.CONDENSED_DIRT));
-        addColorBlockTag(COLOR_BLOCK_HOE, false, new ArrayList<>());
-        addColorBlockTag(COLOR_BLOCK_AXE, false, new ArrayList<>());
+        addColorBlockTag(BlockTags.PICKAXE_MINEABLE, false, new ArrayList<>(colorBlockMap.values()));
+//        addColorBlockTag(BlockTags.PICKAXE_MINEABLE, false, List.of(ColorBlocks.BASE_COLOR_BLOCK));
+        addColorBlockTag(BlockTags.SHOVEL_MINEABLE, false, new ArrayList<>());
+        addColorBlockTag(BlockTags.HOE_MINEABLE, false, new ArrayList<>());
+        addColorBlockTag(BlockTags.AXE_MINEABLE, false, new ArrayList<>());
     }
 }

@@ -16,8 +16,7 @@ public class MCBSLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-// Also adds the condition that it survives the explosion that broke it, if applicable,
-//        addDrop(ColorBlocks.CONDENSED_DIRT);
+        // drop color block itself when mined
         for (ConfigColor color : colorBlockMap.keySet()) {
             addDrop(colorBlockMap.get(color));
         }

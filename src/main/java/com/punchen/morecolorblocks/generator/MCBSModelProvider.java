@@ -25,7 +25,7 @@ public class MCBSModelProvider extends FabricModelProvider {
 
     @Override
     public String getName() {
-        return "MoreColorBlocksModelProvider";
+        return "MCBSModelProvider";
     }
 
 

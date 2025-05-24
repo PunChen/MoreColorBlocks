@@ -33,13 +33,13 @@ public class ColorBlocks {
         return Registry.register(Registries.BLOCK, id, block);
     }
 
-    public static final Block CONDENSED_DIRT = register(
-            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).requiresTool().strength(1.8F)),
-            "condensed_dirt",
-            true
-    );
+//    public static final Block CONDENSED_DIRT = register(
+//            new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS).requiresTool().strength(1.8F)),
+//            "condensed_dirt",
+//            true
+//    );
 
-    public static final Block BASE_COLOR_BLOCK = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), "base_color_block", true);
+//    public static final Block BASE_COLOR_BLOCK = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), "base_color_block", true);
 
     public static final Block RED_1 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_1.name().toLowerCase(), true);
     public static final Block RED_2 = register(new BaseBlock(AbstractBlock.Settings.create().instrument(NoteBlockInstrument.BASEDRUM).requiresTool().strength(1.8F)), ConfigColor.RED_2.name().toLowerCase(), true);
@@ -125,8 +125,8 @@ public class ColorBlocks {
     public static void initialize() {
 
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register((itemGroup) -> {
-            itemGroup.add(ColorBlocks.CONDENSED_DIRT.asItem());
-            itemGroup.add(ColorBlocks.BASE_COLOR_BLOCK.asItem());
+//            itemGroup.add(ColorBlocks.CONDENSED_DIRT.asItem());
+//            itemGroup.add(ColorBlocks.BASE_COLOR_BLOCK.asItem());
 
             for (Block block:colorBlockMap.values()) {
                 itemGroup.add(block);
