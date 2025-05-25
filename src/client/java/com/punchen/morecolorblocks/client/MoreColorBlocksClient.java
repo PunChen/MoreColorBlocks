@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 
 import static com.punchen.morecolorblocks.block.ColorBlocks.colorBlockMap;
 import static com.punchen.morecolorblocks.block.ColorBlocks.colorBlockPowderMap;
+import static com.punchen.morecolorblocks.items.ColorItems.colorDyeItemMap;
 
 public class MoreColorBlocksClient implements ClientModInitializer {
 
@@ -30,6 +31,10 @@ public class MoreColorBlocksClient implements ClientModInitializer {
             ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> Utils.toHexColor(color), colorBlockPowderMap.get(color));
             ColorProviderRegistry.ITEM.register((state, tintIndex) -> Utils.toHexColor(color), ColorItems.colorPowderItemMap.get(color));
         }
+
+//        for (ConfigColor color : colorDyeItemMap.keySet()) {
+//            ColorProviderRegistry.ITEM.register((state, tintIndex) -> Utils.toHexColor(color), ColorItems.colorDyeItemMap.get(color));
+//        }
 
         Utils.LOGGER.warn("MoreColorBlocksClient onInitializeClient end");
 

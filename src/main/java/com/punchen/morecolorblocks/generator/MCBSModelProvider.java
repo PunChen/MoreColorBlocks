@@ -1,16 +1,20 @@
 package com.punchen.morecolorblocks.generator;
 
 import com.punchen.morecolorblocks.colors.ConfigColor;
+import com.punchen.morecolorblocks.items.ColorItems;
 import com.punchen.morecolorblocks.utils.Reference;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.*;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
 import static com.punchen.morecolorblocks.block.ColorBlocks.colorBlockMap;
 import static com.punchen.morecolorblocks.block.ColorBlocks.colorBlockPowderMap;
+import static com.punchen.morecolorblocks.items.ColorItems.colorDyeItemMap;
+import static net.minecraft.advancement.criterion.ConsumeItemCriterion.Conditions.item;
 
 public class MCBSModelProvider extends FabricModelProvider {
     public MCBSModelProvider(FabricDataOutput output) {
@@ -20,6 +24,9 @@ public class MCBSModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        for (ConfigColor color : colorDyeItemMap.keySet()) {
+            itemModelGenerator.register(colorDyeItemMap.get(color), Models.GENERATED);
+        }
     }
 
     @Override
@@ -48,6 +55,9 @@ public class MCBSModelProvider extends FabricModelProvider {
 
     // 以树叶作为父类，手动修改颜色
     public static final Model LEAVES_MODEL = block("block/leaves", TextureKey.ALL);
+
+//    public static final Model WHITE_DYE_MODEL = item("item/white_dye", TextureKey.ALL);
+
 
     //helper method for creating Models
     private static Model block(String parent, TextureKey... requiredTextureKeys) {

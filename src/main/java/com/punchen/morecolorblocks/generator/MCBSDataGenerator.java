@@ -14,6 +14,7 @@ public class MCBSDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(MCBSBlockTagProvider::new);
         pack.addProvider(MCBSENProvider::new);
         pack.addProvider(MCBSCNProvider::new);
+        pack.addProvider(MCBSRecipeGenerator::new);
     }
 
 }
